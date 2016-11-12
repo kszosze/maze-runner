@@ -1,6 +1,15 @@
+.classpath
+.idea/
+.project
+.settings/
+bin/
+gradle/
+gradlew
+gradlew.bat
 .gradle
 build/
-
+*.jar
+*.zip
 # Ignore Gradle GUI config
 gradle-app.setting
 
