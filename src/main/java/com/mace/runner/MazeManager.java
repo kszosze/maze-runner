@@ -24,25 +24,18 @@ import com.mace.runner.model.Position;
 @ConfigurationProperties(prefix = "endpoints")
 public class MazeManager implements IMazeManager {
 
-	/** The Constant log. */
 	private static final Logger log = LoggerFactory.getLogger(MazeManager.class);
 
-	/** The rest template. */
 	private final RestTemplate restTemplate;
 
-	/** The move url. */
 	private String moveUrl = "";
 	
-	/** The is out url. */
 	private String isOutUrl = "";
 	
-	/** The map url. */
 	private String mapUrl = "";
 	
-	/** The path url. */
 	private String pathUrl = "";
 
-	/** The response. */
 	private ResponseEntity<String> response;
 
 	/**
@@ -62,7 +55,7 @@ public class MazeManager implements IMazeManager {
 		log.info("Requesting a map to {}", mapUrl);
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setAccept(Collections.singletonList(MediaType.parseMediaType("text/plain")));
-		HttpEntity<Object> requestEntity = new HttpEntity<Object>(httpHeaders);
+		HttpEntity<Object> requestEntity = new HttpEntity<>(httpHeaders);
 		restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
 		final ResponseEntity<String> rawMap = restTemplate.exchange(mapUrl, HttpMethod.GET, requestEntity, String.class);
 		final List<String> rawMapList = Arrays.asList(rawMap.getBody().split("\n"));

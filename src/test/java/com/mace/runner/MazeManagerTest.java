@@ -37,7 +37,7 @@ public class MazeManagerTest {
 	
 	@Test
 	public void getMapTest() {
-		final ResponseEntity<String> result = new ResponseEntity<String>("O O O X O O X\nX X O X O X X\nX O O X O X X\nX O X X O O X\nX O O O O X X\nX O X X O O O\nX X X X X X O",
+		final ResponseEntity<String> result = new ResponseEntity<>("O O O X O O X\nX X O X O X X\nX O O X O X X\nX O X X O O X\nX O O O O X X\nX O X X O O O\nX X X X X X O",
 				HttpStatus.OK);
 		when(restTemplate.exchange(any(String.class), any(HttpMethod.class), any(HttpEntity.class),any(Class.class))).thenReturn(result);
 		Maze maze = mazeManager.getMap();
@@ -49,14 +49,14 @@ public class MazeManagerTest {
 	
 	@Test
 	public void moveTest() {
-		final ResponseEntity<String> result = new ResponseEntity<String>(HttpStatus.OK);
+		final ResponseEntity<String> result = new ResponseEntity<>(HttpStatus.OK);
 		when(restTemplate.postForEntity(any(String.class), any(Position.class), any(Class.class))).thenReturn(result);
 		assertThat(mazeManager.move(new Position())).isEqualTo(Boolean.TRUE);
 	}
 	
 	@Test
 	public void isOutTest() {
-		final ResponseEntity<Boolean> result = new ResponseEntity<Boolean>(Boolean.TRUE,HttpStatus.OK);
+		final ResponseEntity<Boolean> result = new ResponseEntity<>(Boolean.TRUE,HttpStatus.OK);
 		when(restTemplate.getForEntity(any(String.class), any(Class.class))).thenReturn(result);
 		assertThat(mazeManager.isOut()).isEqualTo(Boolean.TRUE);
 	}

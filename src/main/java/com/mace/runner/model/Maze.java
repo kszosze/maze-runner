@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Queue;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Maze.
  */
@@ -157,13 +156,12 @@ public class Maze {
 	 */
 	public List<Position> compute(final Position source, final Position exit) {
 		final Queue<Position> queue = new ArrayDeque<>();
-		final Map<Position, Integer> distances = new HashMap<>();
+		//final Map<Position, Integer> distances = new HashMap<>();
 		parents.put(source, null);
 		queue.add(source);
-		distances.put(source, 0);
+	//	distances.put(source, 0);
 
 		while (!queue.isEmpty()) {
-			// Removes the head of the queue.
 			final Position current = queue.remove();
 			if (current.equals(exit)) {
 				return constructPath(exit, source);
@@ -177,9 +175,6 @@ public class Maze {
 				}
 			}
 		}
-
-		// null means that the target node is not reachable
-		// from the source node.
 		return null;
 	}
 

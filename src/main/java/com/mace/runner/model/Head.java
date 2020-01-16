@@ -33,15 +33,14 @@ public class Head implements Runnable {
      * @param answerQueue the answer queue
      * @param mazeManager the maze manager
      */
-    public Head(final BlockingQueue<Message> messagesQueue, final BlockingQueue<Message> answerQueue, final IMazeManager mazeManager) {
+    public Head(final BlockingQueue<Message> messagesQueue,
+                final BlockingQueue<Message> answerQueue,
+                final IMazeManager mazeManager) {
         this.messagesQueue = messagesQueue;
         this.mazeManager = mazeManager;
         this.answerQueue = answerQueue;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Runnable#run()
-     */
     @Override
     public void run() {
     	log.info("Head is prepare to think");
@@ -52,18 +51,18 @@ public class Head implements Runnable {
     	log.info("	Hey got a path!");
     	try {
     		pathIt.next();
-			while (pathIt.hasNext()) {
-				final Position position = pathIt.next();
-				log.info("Head say move to ({}, {})", position.getX(), position.getY());
-				messagesQueue.add(new Message(position, false));
-				Message message = answerQueue.take();
-				if (message.getFinish() && mazeManager.isOut()) {
-					log.info("Got it, we are out!");
-					messagesQueue.add(new Message(null, true));
-				}				
+				while (pathIt.hasNext()) {
+					final Position position = pathIt.next();
+					log.info("Head say move to ({}, {})", position.getX(), position.getY());
+					messagesQueue.add(new Message(position, false));
+					Message message = answerQueue.take();
+					if (message.getFinish() && mazeManager.isOut()) {
+						log.info("Got it, we are out!");
+						messagesQueue.add(new Message(null, true));
+					}
+				}
+			} catch (InterruptedException e) {
+				log.error("I've been interrupted!");
 			}
-		} catch (InterruptedException e) {
-			log.error("I had been interrupted!");
-		}
     }
 }
