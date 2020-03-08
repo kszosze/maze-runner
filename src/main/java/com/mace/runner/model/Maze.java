@@ -155,14 +155,15 @@ public class Maze {
 	 * @return the list
 	 */
 	public List<Position> compute(final Position source, final Position exit) {
-		final Queue<Position> queue = new ArrayDeque<>();
+		List<Position> computePath = new ArrayList<>();
+		Queue<Position> queue = new ArrayDeque<>();
 		parents.put(source, null);
 		queue.add(source);
-
-		while (!queue.isEmpty()) {
-			final Position current = queue.remove();
+		Position current = null;
+		while (!queue.isEmpty() && (current == null || !current.equals(exit))) {
+			current = queue.remove();
 			if (current.equals(exit)) {
-				return constructPath(exit, source);
+				computePath = constructPath(exit);
 			}
 
 			for (final Position child : generateChildren(current)) {
@@ -173,17 +174,16 @@ public class Maze {
 				}
 			}
 		}
-		return null;
+		return computePath;
 	}
 
 	/**
 	 * Construct path.
 	 *
 	 * @param exit the exit
-	 * @param init the init
 	 * @return the list
 	 */
-	private List<Position> constructPath(final Position exit, final Position init) {
+	private List<Position> constructPath(final Position exit) {
 		Position current = exit;
 		final List<Position> path = new ArrayList<>();
 
