@@ -1,7 +1,7 @@
 package com.mace.runner.configuration;
 
-import com.mace.runner.IMazeManager;
-import com.mace.runner.MazeManager;
+import com.mace.runner.managers.IMazeManager;
+import com.mace.runner.managers.MazeManager;
 import com.mace.runner.model.Head;
 import com.mace.runner.model.Message;
 import com.mace.runner.model.Runner;

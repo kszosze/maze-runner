@@ -1,4 +1,4 @@
-package com.mace.runner;
+package com.mace.runner.managers;
 
 import java.util.List;
 

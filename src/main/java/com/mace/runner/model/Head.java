@@ -7,7 +7,7 @@ import java.util.concurrent.BlockingQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.mace.runner.IMazeManager;
+import com.mace.runner.managers.IMazeManager;
 
 /**
  * The Class Head.
@@ -51,13 +51,15 @@ public class Head implements Runnable {
     	log.info("	Hey got a path!");
     	try {
     		pathIt.next();
-				while (pathIt.hasNext()) {
+    		boolean stillIn = true;
+				while (pathIt.hasNext() && stillIn) {
 					final Position position = pathIt.next();
 					log.info("Head say move to ({}, {})", position.getX(), position.getY());
 					messagesQueue.add(new Message(position, false));
 					Message message = answerQueue.take();
 					if (message.getFinish() && mazeManager.isOut()) {
 						log.info("Got it, we are out!");
+						stillIn = false;
 						messagesQueue.add(new Message(null, true));
 					}
 				}

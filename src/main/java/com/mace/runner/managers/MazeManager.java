@@ -1,4 +1,4 @@
-package com.mace.runner;
+package com.mace.runner.managers;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -48,7 +48,7 @@ public class MazeManager implements IMazeManager {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mace.runner.IMazeManager#getMap()
+	 * @see com.mace.runner.managers.IMazeManager#getMap()
 	 */
 	@Override
 	public Maze getMap() {
@@ -63,7 +63,7 @@ public class MazeManager implements IMazeManager {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mace.runner.IMazeManager#move(com.mace.runner.model.Position)
+	 * @see com.mace.runner.managers.IMazeManager#move(com.mace.runner.model.Position)
 	 */
 	@Override
 	public Boolean move(final Position position) {
@@ -73,7 +73,7 @@ public class MazeManager implements IMazeManager {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mace.runner.IMazeManager#isOut()
+	 * @see com.mace.runner.managers.IMazeManager#isOut()
 	 */
 	@Override
 	public Boolean isOut() {
@@ -82,7 +82,7 @@ public class MazeManager implements IMazeManager {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mace.runner.IMazeManager#getPath()
+	 * @see com.mace.runner.managers.IMazeManager#getPath()
 	 */
 	@Override
 	public List<Position> getPath() {

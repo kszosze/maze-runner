@@ -5,7 +5,7 @@ import java.util.concurrent.BlockingQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.mace.runner.IMazeManager;
+import com.mace.runner.managers.IMazeManager;
 
 /**
  * The Class Runner.
@@ -52,13 +52,13 @@ public class Runner implements Runnable {
         isOut = message.getFinish();
         if (!isOut) {
           log.info(" My Lord! I'm moving to ({}, {})", message.getPoint().getX(), message.getPoint().getY());
-				final Boolean result = mazeManager.move(message.getPoint());
-				answerQueue.add(new Message(message.getPoint(), result));
-				if (!result) {
-					log.error("Still in the Maze ");
-				} else {
-					log.info(" My Lord! We are free!!");
-				}
+					final Boolean result = mazeManager.move(message.getPoint());
+					answerQueue.add(new Message(message.getPoint(), result));
+					if (!result) {
+						log.error("Still in the Maze ");
+					} else {
+						log.info(" My Lord! We are free!!");
+					}
         }
       }
       log.info("Freeeeee!!!");

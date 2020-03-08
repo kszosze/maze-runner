@@ -3,3 +3,6 @@ endpoints:
     moveUrl: "http://localhost:8080/rest/maze/move"
     mapUrl: "http://localhost:8080/rest/maze/map"
     pathUrl: "http://localhost:8080/rest/maze/path"
+spring:
+    main:
+        web-application-type: none

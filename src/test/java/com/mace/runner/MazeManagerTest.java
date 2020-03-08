@@ -5,14 +5,14 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
-import java.util.List;
 
+import com.mace.runner.managers.IMazeManager;
+import com.mace.runner.managers.MazeManager;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -39,7 +39,7 @@ public class MazeManagerTest {
 	public void getMapTest() {
 		final ResponseEntity<String> result = new ResponseEntity<>("O O O X O O X\nX X O X O X X\nX O O X O X X\nX O X X O O X\nX O O O O X X\nX O X X O O O\nX X X X X X O",
 				HttpStatus.OK);
-		when(restTemplate.exchange(any(String.class), any(HttpMethod.class), any(HttpEntity.class),any(Class.class))).thenReturn(result);
+		when(restTemplate.exchange(any(String.class), any(HttpMethod.class), any(HttpEntity.class), any(Class.class))).thenReturn(result);
 		Maze maze = mazeManager.getMap();
 		assertThat(maze).isNotNull();
 		assertThat(maze.getHeight()).isEqualTo(7);

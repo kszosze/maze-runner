@@ -1,0 +1,10 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/rest/maze/map"
+  },
+  "response": {
+    "status": 200,
+    "body": "O O O X O O X\nX X O X O X X\nX O O X O X X\nX O X X O O X\nX O O O O X X\nX O X X O O O\nX X X X X X O"
+  }
+}

@@ -156,10 +156,8 @@ public class Maze {
 	 */
 	public List<Position> compute(final Position source, final Position exit) {
 		final Queue<Position> queue = new ArrayDeque<>();
-		//final Map<Position, Integer> distances = new HashMap<>();
 		parents.put(source, null);
 		queue.add(source);
-	//	distances.put(source, 0);
 
 		while (!queue.isEmpty()) {
 			final Position current = queue.remove();

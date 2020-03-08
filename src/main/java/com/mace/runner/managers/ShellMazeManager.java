@@ -1,4 +1,4 @@
-package com.mace.runner;
+package com.mace.runner.managers;
 
 import com.mace.runner.model.Head;
 import com.mace.runner.model.Runner;
@@ -13,11 +13,14 @@ import java.util.concurrent.TimeUnit;
 @ShellComponent
 public class ShellMazeManager {
 
-	@Autowired
 	private Head head;
 
-	@Autowired
 	private Runner runner;
+
+	public ShellMazeManager(Head head, Runner runner) {
+		this.head = head;
+		this.runner = runner;
+	}
 
 	@ShellMethod("Start Running.")
 	public void startRunning() throws InterruptedException {
